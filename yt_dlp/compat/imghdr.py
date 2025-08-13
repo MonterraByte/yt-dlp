@@ -19,4 +19,10 @@ def what(file=None, h=None):
     if h.startswith(b'GIF'):
         return 'gif'
 
+    if h.startswith((b'ftypavif', b'ftypavis'), 4):
+        return 'avif'
+
+    if h.startswith((b'\x00\x00\x00\x0CJXL \x0D\x0A\x87\x0A', b'\xFF\x0A')):
+        return 'jxl'
+
     return None
